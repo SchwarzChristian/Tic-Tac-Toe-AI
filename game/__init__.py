@@ -9,9 +9,11 @@ ProtocolEntry = Dict[ str, ProtocolAgentEntry ]
 Protocol = List[ ProtocolEntry ]
 
 class Game:
-    def __init__(self, agent_1: Agent, agent_2: Agent):
+    def __init__(self, agent_1: Agent, agent_2: Agent, silent: bool = False):
         agent_1.symbol = "X"
         agent_2.symbol = "O"
+        agent_1.silent = silent
+        agent_2.silent = silent
 
         self._field = Field()
         self._agent_1 = agent_1
@@ -24,7 +26,6 @@ class Game:
             result, protocol_agent_entry = self._play(self._agent_1)
             protocol_entry[self._agent_1.name] = protocol_agent_entry
             if result != "continue":
-                print(self._field.as_ascii)
                 protocol.append(protocol_entry)
                 if result == "win":
                     self._agent_1.train(self._agent_1.name, protocol)
@@ -35,7 +36,6 @@ class Game:
             protocol_entry[self._agent_2.name] = protocol_agent_entry
             protocol.append(protocol_entry)
             if result != "continue":
-                print(self._field.as_ascii)
                 if result == "win":
                     self._agent_1.train(self._agent_2.name, protocol)
                     self._agent_2.train(self._agent_2.name, protocol)
@@ -45,7 +45,6 @@ class Game:
 
     def _play(self, agent: Agent) -> Tuple[ str, ProtocolAgentEntry ]:
         protocol_agent_entry = { "field": deep_copy(self._field.field) }
-        print(self._field.as_ascii)
         move = agent.move(self._field)
         protocol_agent_entry["move"] = move
         return ( self._field.move(*move, agent), protocol_agent_entry )

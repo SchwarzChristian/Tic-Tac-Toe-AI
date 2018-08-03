@@ -6,15 +6,18 @@ from agents import Agent
 import pandas as pd
 from random import shuffle
 
-agent_1 = HumanAgent("human agent")
-agent_2 = AnnAgent("ai agent")
+# agent_1 = AnnAgent("human", "001")
+agent_1 = RandomAgent("random")
+# agent_1 = HumanAgent("ai opponent")
+agent_2 = AnnAgent("ai", "001")
 
 games = []
-for i in range(10):
+game_count = 10000
+for i in range(game_count):
     agents = [agent_1, agent_2]
     shuffle(agents)
-    result, protocol = Game(*agents).play()
-    print(result)
+    result, protocol = Game(*agents, silent=True).play()
+    print("{:5d}/{:5d}: {}".format(i + 1, game_count, result))
     games.append(result)
 
 agent_2.save()

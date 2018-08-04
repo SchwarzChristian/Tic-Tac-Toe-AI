@@ -70,6 +70,10 @@ class AnnAgent(Agent):
                     self._invalid_moves += 1
                 self._train(state.field, decision_field, self._params["invalid_move_reward"])
 
+    def get_qs(self, field: List[ List[ str ] ]) -> np.array:
+        field = self._transform_field(field)
+        return self._model.predict(field)
+
     @property
     def invalid_moves(self):
         moves = self._invalid_moves
@@ -136,7 +140,7 @@ class AnnAgent(Agent):
             print("building new model")
             model = Sequential()
             model.add(Reshape((27,), input_shape=(3, 3, 3)))
-            model.add(Dense(100, activation="linear"))
+            model.add(Dense(1000, activation="linear"))
             model.add(Dense(100, activation="linear"))
             model.add(Dense(9, activation="linear"))
 

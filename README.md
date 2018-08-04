@@ -27,6 +27,7 @@ AnnAgent    | The AI agent. It will (hopefully) learn to play while doing so.
 
 ## Analytics
 If you have [Jupyter](http://jupyter.org/) installed, you can use the following notebooks to analyze the models:
+
 Notebook                    | description
 ----------------------------|-------------
 Visualize Training Progress | Plots win, draw and invalid move counts per batch to show how this values evolved over the training.

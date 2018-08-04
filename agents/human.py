@@ -14,5 +14,5 @@ class HumanAgent(Agent):
     def save(self) -> None:
         pass
 
-    def train(self, winner: str, protocol) -> None:
+    def game_over(self, result: str) -> None:
         pass

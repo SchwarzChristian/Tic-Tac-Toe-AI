@@ -13,7 +13,7 @@ class Agent:
     def save(self) -> None:
         raise NotImplementedError
 
-    def train(self, winner: str, protocol) -> None:
+    def game_over(self, result: str) -> None:
         raise NotImplementedError
 
     def move(self, filed) -> Tuple[int, int]:

@@ -4,3 +4,6 @@
 *.pyc
 *.model
 *.weights
+*.params
+*.ipynb
+*.csv

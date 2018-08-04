@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Tuple
 from agents import Agent
 
 class Field:
@@ -16,17 +16,22 @@ class Field:
 
     @property
     def as_ascii(self) -> str:
-        field = "+---+---+---+\n"
-        for y in range(3):
-            field += "|"
-            for x in range (3):
-                if self._last_move == (x, y):
-                    field += ">{}<|".format(self._field[y][x])
-                else:
-                    field += " {} |".format(self._field[y][x])
-            field += "\n+---+---+---+\n"
-        return field
+        return Field.to_ascii(self._field, self._last_move)
         
+    @staticmethod
+    def to_ascii(field: List[List[int]], last_move: Tuple[ int, int ]) -> None:
+        ascii_field = "+---+---+---+\n"
+        for y in range(3):
+            ascii_field += "|"
+            for x in range (3):
+                if last_move == (x, y):
+                    ascii_field += ">{}<|".format(field[y][x])
+                else:
+                    ascii_field += " {} |".format(field[y][x])
+            ascii_field += "\n+---+---+---+\n"
+        return ascii_field
+
+
     def move(self, x: int, y: int, agent: Agent) -> str:
         self._last_move = (x, y)
 

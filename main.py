@@ -10,7 +10,6 @@ from agents.AnnAgent import AnnAgent
 from agents import Agent
 
 batch_size = 100
-batches = 100
 result_filename = "results.csv"
 
 batch = 0
@@ -25,7 +24,7 @@ while True:
         agents = [agent_1, agent_2]
         shuffle(agents)
         winner = Game(*agents).play()
-        print("batch {:5d}/{:5d} | game: {:5d}/{:5d}: {}".format(batch + 1, batches, game + 1, batch_size, winner))
+        print("batch {:5d} | game: {:5d}/{:5d}: {}".format(batch + 1, game + 1, batch_size, winner))
         winners.append(winner)
 
     agent_1.save()

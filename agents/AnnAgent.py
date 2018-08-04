@@ -83,9 +83,9 @@ class AnnAgent(Agent):
     def save(self) -> None:
         print("eps:", self._params["eps"])
         print("saving model")
-        model_filename = self._model_name + ".model"
-        weights_filename = self._model_name + ".weights"
-        params_filename = self._model_name + ".params"
+        model_filename = "models/{}.model".format(self._model_name)
+        weights_filename = "models/{}.weights".format(self._model_name)
+        params_filename = "models/{}.params".format(self._model_name)
 
         with open(params_filename, "w") as f:
             json.dump(self._params, f)
@@ -129,8 +129,8 @@ class AnnAgent(Agent):
 
     def _init_model(self) -> Sequential:
         print("initializing model")
-        model_filename = self._model_name + ".model"
-        weights_filename = self._model_name + ".weights"
+        model_filename = "models/{}.model".format(self._model_name)
+        weights_filename = "models/{}.weights".format(self._model_name)
         if isfile(model_filename) and isfile(weights_filename):
             print("saved model found")
             with open(model_filename) as f:
@@ -149,7 +149,7 @@ class AnnAgent(Agent):
         return model
 
     def _load_params(self) -> Dict[ str, float ]:
-        filename = self._model_name + ".params"
+        filename = "models/{}.params".format(self._model_name)
         if not isfile(filename): return None
         with open(filename) as f:
             params = json.load(f)

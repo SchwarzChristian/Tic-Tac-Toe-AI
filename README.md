@@ -13,7 +13,7 @@ You may want to update `main.py` first, to set up some parameter.
 ## Parameter
 To set training parameter you need to modify `main.py`.
 
-Above the main loop you can set the batch size (see [Training]() below). At the to of the main loop you can set up the agents that should play against each other (see [Agents]() below).
+Above the main loop you can set the batch size (see [Training](#training) below). At the to of the main loop you can set up the agents that should play against each other (see [Agents](#agents) below).
 
 ### Training
 The training process runs in batches. Afer each batch the agents models are saved and a statistics dataset is appended to `results.csv`. The training runs until you abort it by hitting `Ctrl+C`.

@@ -1,0 +1,1 @@
+{"invalid_move_reward": -100, "gamma": 0.9, "win_reward": 30, "eps_decay": 0.999, "move_loose_reward": 1, "loose_reward": -30, "move_win_reward": -1, "draw_reward": 0, "move_draw_reward": 0, "min_eps": 0.1, "eps": 0.09991257268528593}

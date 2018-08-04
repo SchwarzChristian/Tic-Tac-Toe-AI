@@ -1,0 +1,5 @@
+.mypy*
+.pytest*
+.vscode
+*.pyc
+.ipynb_checkpoints

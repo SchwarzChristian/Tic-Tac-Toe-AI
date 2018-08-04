@@ -2,8 +2,4 @@
 .pytest*
 .vscode
 *.pyc
-*.model
-*.weights
-*.params
-*.ipynb
-*.csv
+.ipynb_checkpoints
